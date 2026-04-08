@@ -9,6 +9,7 @@ import FilmDetail from './pages/FilmDetail';
 import Pass from './pages/Pass';
 import Journal from './pages/Journal';
 import Creators from './pages/Creators';
+import { PasswordGate } from './components/PasswordGate';
 
 const queryClient = new QueryClient();
 
@@ -16,17 +17,19 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <LanguageProvider>
       <TooltipProvider>
-        <Toaster />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/explore" element={<Explore />} />
-            <Route path="/film/:id" element={<FilmDetail />} />
-            <Route path="/pass" element={<Pass />} />
-            <Route path="/journal" element={<Journal />} />
-            <Route path="/creators" element={<Creators />} />
-          </Routes>
-        </BrowserRouter>
+        <PasswordGate>
+          <Toaster />
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/explore" element={<Explore />} />
+              <Route path="/film/:id" element={<FilmDetail />} />
+              <Route path="/pass" element={<Pass />} />
+              <Route path="/journal" element={<Journal />} />
+              <Route path="/creators" element={<Creators />} />
+            </Routes>
+          </BrowserRouter>
+        </PasswordGate>
       </TooltipProvider>
     </LanguageProvider>
   </QueryClientProvider>

@@ -1,0 +1,319 @@
+import React from "react";
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import {
+  Play,
+  Users,
+  Calendar,
+  Gift,
+  ArrowRight,
+  Eye,
+  Sparkles,
+  Film,
+  Heart,
+  Star,
+  Wallet,
+} from "lucide-react";
+import {
+  Navbar,
+  Footer,
+  SectionHeader,
+  FilmCard,
+  EditorialCard,
+  StatusBadge,
+  EventCard,
+} from "@/components/shared";
+import { films, articles, events, IMAGES } from "@/lib/dataEn";
+
+export default function IndexEn() {
+  const featuredFilm = films[0];
+
+  return (
+    <div className="min-h-screen bg-[#0A0A0A]">
+      <Navbar />
+
+      {/* ─── Hero Section ─── */}
+      <section className="relative min-h-[90vh] flex items-center pt-16">
+        <div className="absolute inset-0">
+          <img
+            src={IMAGES.hero}
+            alt="AGARRA Cinema"
+            className="w-full h-full object-cover object-[70%_center] opacity-30"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A] via-[#0A0A0A]/85 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-[#0A0A0A]/50" />
+        </div>
+
+        <div className="relative max-w-7xl mx-auto px-6 py-20 grid lg:grid-cols-2 gap-16 items-center">
+          <div>
+            <div className="inline-flex items-center gap-2 bg-[#C8A97E]/10 border border-[#C8A97E]/20 rounded-full px-4 py-1.5 mb-8">
+              <Sparkles size={14} className="text-[#C8A97E]" />
+              <span className="text-xs text-[#C8A97E] font-medium">
+                Ibero-American Independent Cinema
+              </span>
+            </div>
+
+            <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-[#F5F0EB] leading-[1.05] tracking-tight">
+              Every indie film becomes a{" "}
+              <span className="text-[#C8A97E] italic">live channel</span>
+            </h1>
+
+            <p className="mt-6 text-lg text-[#9A9590] leading-relaxed max-w-lg">
+              AGARRA is a curated platform where independent cinema meets community.
+              Watch films, join live events, participate in conversations, and earn
+              rewards — all in one premium experience.
+            </p>
+
+            <div className="mt-10 flex flex-wrap items-center gap-4">
+              <Link to="/explore">
+                <Button className="bg-[#C8A97E] text-[#0A0A0A] hover:bg-[#D4BA94] font-medium rounded-md px-8 py-6 text-base">
+                  Explore Films
+                  <ArrowRight size={18} className="ml-2" />
+                </Button>
+              </Link>
+              <Link to="/pass">
+                <Button
+                  variant="outline"
+                  className="border-[#C8A97E]/40 text-[#C8A97E] hover:bg-[#C8A97E]/10 !bg-transparent rounded-md px-8 py-6 text-base"
+                >
+                  Join AGARRA Pass
+                </Button>
+              </Link>
+            </div>
+
+            <div className="mt-12 flex items-center gap-8 text-sm text-[#9A9590]">
+              <div className="flex items-center gap-2">
+                <Film size={16} className="text-[#C8A97E]" />
+                <span>120+ Films</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Users size={16} className="text-[#C8A97E]" />
+                <span>18K+ Members</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Calendar size={16} className="text-[#C8A97E]" />
+                <span>Weekly Events</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Featured Film Hero Card */}
+          <div className="hidden lg:block">
+            <Link to={`/film/${featuredFilm.id}`} className="group block">
+              <div className="relative bg-[#141414] border border-[#262626] rounded-xl overflow-hidden hover:border-[#C8A97E]/30 transition-all duration-500 glow-hover">
+                <div className="relative aspect-video overflow-hidden">
+                  <img
+                    src={featuredFilm.image}
+                    alt={featuredFilm.title}
+                    className="w-full h-full object-cover img-zoom"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#141414] via-transparent to-transparent" />
+                  <div className="absolute top-4 left-4 flex gap-2">
+                    {featuredFilm.tags.map((tag) => (
+                      <StatusBadge key={tag} label={tag} />
+                    ))}
+                  </div>
+                </div>
+                <div className="p-6">
+                  <h3 className="font-display text-2xl font-bold text-[#F5F0EB] group-hover:text-[#C8A97E] transition-colors">
+                    {featuredFilm.title}
+                  </h3>
+                  <p className="mt-1 text-sm text-[#9A9590]">
+                    {featuredFilm.director} · {featuredFilm.country} · {featuredFilm.year}
+                  </p>
+                  <p className="mt-3 text-sm text-[#9A9590] leading-relaxed line-clamp-2">
+                    {featuredFilm.shortDescription}
+                  </p>
+                  <div className="mt-5 flex items-center gap-3">
+                    <Button size="sm" className="bg-[#C8A97E] text-[#0A0A0A] hover:bg-[#D4BA94] rounded-md text-xs font-medium">
+                      <Play size={14} className="mr-1 fill-[#0A0A0A]" /> Watch
+                    </Button>
+                    <Button size="sm" className="bg-transparent border border-[#C8A97E]/40 text-[#C8A97E] hover:bg-[#C8A97E]/10 rounded-md text-xs">
+                      <Users size={14} className="mr-1" /> Join Channel
+                    </Button>
+                    <Button size="sm" className="bg-transparent border border-[#262626] text-[#9A9590] hover:border-[#C8A97E]/30 hover:text-[#C8A97E] rounded-md text-xs hover:bg-transparent">
+                      <Calendar size={14} className="mr-1" /> Event
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── Why AGARRA ─── */}
+      <section className="max-w-7xl mx-auto px-6 py-24">
+        <SectionHeader
+          title="Why AGARRA"
+          subtitle="More than streaming. A living ecosystem for independent cinema."
+        />
+        <div className="grid md:grid-cols-3 gap-6">
+          {[
+            {
+              icon: <Eye size={28} />,
+              title: "Curated Indie Cinema",
+              description:
+                "Every film is hand-selected for its artistic merit, cultural significance, and storytelling power. No algorithms — just taste, context, and editorial care.",
+            },
+            {
+              icon: <Heart size={28} />,
+              title: "Live Audience Participation",
+              description:
+                "Join watch parties, live Q&As with directors, community discussions, and real-time events. Cinema becomes a shared, social experience.",
+            },
+            {
+              icon: <Wallet size={28} />,
+              title: "Rewards, Access & Wallet Utility",
+              description:
+                "Earn collectibles, unlock exclusive access, and build your cinema passport. Your participation has real value in the AGARRA ecosystem.",
+            },
+          ].map((feature) => (
+            <div
+              key={feature.title}
+              className="bg-[#141414] border border-[#262626] rounded-lg p-8 hover:border-[#C8A97E]/30 transition-all duration-300 glow-hover group"
+            >
+              <div className="text-[#C8A97E] group-hover:scale-110 transition-transform duration-300">
+                {feature.icon}
+              </div>
+              <h3 className="mt-5 font-display text-xl font-semibold text-[#F5F0EB]">
+                {feature.title}
+              </h3>
+              <p className="mt-3 text-sm text-[#9A9590] leading-relaxed">
+                {feature.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ─── Live Channels ─── */}
+      <section className="max-w-7xl mx-auto px-6 py-24">
+        <SectionHeader
+          title="Live Channels"
+          subtitle="Active film communities with events, rewards, and ongoing conversations."
+          action="View all channels"
+          actionLink="/explore"
+        />
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {films.slice(0, 6).map((film) => (
+            <FilmCard key={film.id} film={film} />
+          ))}
+        </div>
+      </section>
+
+      {/* ─── How It Works ─── */}
+      <section className="py-24 bg-[#0E0E0E]">
+        <div className="max-w-7xl mx-auto px-6">
+          <SectionHeader
+            title="How It Works"
+            subtitle="Three simple steps to join the AGARRA experience."
+          />
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                step: "01",
+                title: "Watch",
+                description:
+                  "Explore our curated collection of Ibero-American independent films. Each title is selected for its artistic and cultural value.",
+                icon: <Play size={32} className="fill-[#C8A97E]" />,
+              },
+              {
+                step: "02",
+                title: "Participate",
+                description:
+                  "Join live events, Q&As, watch parties, and community discussions. Every film channel is a living space for engagement.",
+                icon: <Users size={32} />,
+              },
+              {
+                step: "03",
+                title: "Earn",
+                description:
+                  "Collect rewards, unlock exclusive access, and build your cinema passport. Your participation creates real value.",
+                icon: <Gift size={32} />,
+              },
+            ].map((item) => (
+              <div key={item.step} className="relative group">
+                <div className="bg-[#141414] border border-[#262626] rounded-lg p-8 hover:border-[#C8A97E]/30 transition-all duration-300 h-full">
+                  <span className="font-display text-5xl font-bold text-[#C8A97E]/15">
+                    {item.step}
+                  </span>
+                  <div className="mt-4 text-[#C8A97E]">{item.icon}</div>
+                  <h3 className="mt-4 font-display text-2xl font-bold text-[#F5F0EB]">
+                    {item.title}
+                  </h3>
+                  <p className="mt-3 text-sm text-[#9A9590] leading-relaxed">
+                    {item.description}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── Upcoming Events ─── */}
+      <section className="max-w-7xl mx-auto px-6 py-24">
+        <SectionHeader
+          title="Upcoming Events"
+          subtitle="Live Q&As, watch parties, and panel discussions happening this week."
+        />
+        <div className="grid md:grid-cols-3 gap-6">
+          {events.map((event) => (
+            <EventCard key={event.id} event={event} />
+          ))}
+        </div>
+      </section>
+
+      {/* ─── From the Journal ─── */}
+      <section className="max-w-7xl mx-auto px-6 py-24">
+        <SectionHeader
+          title="From the Journal"
+          subtitle="Interviews, festival notes, and critical perspectives on independent cinema."
+          action="Read more"
+          actionLink="/journal"
+        />
+        <div className="space-y-6">
+          <EditorialCard article={articles[0]} featured />
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {articles.slice(1).map((article) => (
+              <EditorialCard key={article.id} article={article} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── CTA Banner ─── */}
+      <section className="py-24">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <h2 className="font-display text-4xl md:text-5xl font-bold text-[#F5F0EB] leading-tight">
+            Cinema is better when it's{" "}
+            <span className="text-[#C8A97E] italic">shared</span>
+          </h2>
+          <p className="mt-6 text-lg text-[#9A9590] max-w-2xl mx-auto leading-relaxed">
+            Join AGARRA and become part of a community that values independent
+            storytelling, cultural exchange, and the art of cinema.
+          </p>
+          <div className="mt-10 flex flex-wrap justify-center gap-4">
+            <Link to="/pass">
+              <Button className="bg-[#C8A97E] text-[#0A0A0A] hover:bg-[#D4BA94] font-medium rounded-md px-8 py-6 text-base">
+                Join AGARRA Pass
+                <ArrowRight size={18} className="ml-2" />
+              </Button>
+            </Link>
+            <Link to="/explore">
+              <Button
+                variant="outline"
+                className="border-[#C8A97E]/40 text-[#C8A97E] hover:bg-[#C8A97E]/10 !bg-transparent rounded-md px-8 py-6 text-base"
+              >
+                Explore Films
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
+    </div>
+  );
+}

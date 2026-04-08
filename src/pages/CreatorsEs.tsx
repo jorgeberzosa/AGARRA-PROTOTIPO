@@ -38,23 +38,23 @@ export default function CreatorsEs() {
           <div className="inline-flex items-center gap-2 bg-[#C8A97E]/10 border border-[#C8A97E]/20 rounded-full px-4 py-1.5 mb-8">
             <Film size={14} className="text-[#C8A97E]" />
             <span className="text-xs text-[#C8A97E] font-medium">
-              For Filmmakers
+              Para Creadores
             </span>
           </div>
 
           <h1 className="font-display text-4xl md:text-6xl font-bold text-[#F5F0EB] leading-tight">
-            Turn your film into a{" "}
-            <span className="text-[#C8A97E] italic">living channel</span>
+            Convierte tu película en un{" "}
+            <span className="text-[#C8A97E] italic">canal vivo</span>
           </h1>
 
           <p className="mt-6 text-lg text-[#9A9590] max-w-2xl mx-auto leading-relaxed">
-            AGARRA gives independent filmmakers the tools to build lasting audiences,
-            host events, create rewards, and generate ongoing value from their work.
+            AGARRA te da las herramientas para conectar con tu audiencia, organizar 
+            eventos, crear recompensas y generar valor continuo a partir de tu obra.
           </p>
 
           <div className="mt-10 flex flex-wrap justify-center gap-4">
             <Button className="bg-[#C8A97E] text-[#0A0A0A] hover:bg-[#D4BA94] font-medium rounded-md px-8 py-6 text-base">
-              Apply as Creator
+              Aplicar como Creador
               <ArrowRight size={18} className="ml-2" />
             </Button>
             <Link to="/pass">
@@ -62,7 +62,7 @@ export default function CreatorsEs() {
                 variant="outline"
                 className="border-[#C8A97E]/40 text-[#C8A97E] hover:bg-[#C8A97E]/10 !bg-transparent rounded-md px-8 py-6 text-base"
               >
-                View Creator Plan
+                Ver Plan Creator
               </Button>
             </Link>
           </div>

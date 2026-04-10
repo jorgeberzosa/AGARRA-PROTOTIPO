@@ -53,7 +53,13 @@ export default function CreatorsEn() {
           </p>
 
           <div className="mt-10 flex flex-wrap justify-center gap-4">
-            <Button className="bg-[#C8A97E] text-[#0A0A0A] hover:bg-[#D4BA94] font-medium rounded-md px-8 py-6 text-base">
+            <Link to="/creators/dashboard">
+              <Button className="bg-[#C8A97E] text-[#0A0A0A] hover:bg-[#D4BA94] font-medium rounded-md px-8 py-6 text-base shadow-[0_0_15px_rgba(200,169,126,0.3)]">
+                <Sparkles size={18} className="mr-2" />
+                Access Dashboard (Demo Version)
+              </Button>
+            </Link>
+            <Button className="bg-[#1A1A1A] text-[#F5F0EB] hover:bg-[#262626] font-medium rounded-md px-8 py-6 text-base border border-[#C8A97E]/20">
               Apply as Creator
               <ArrowRight size={18} className="ml-2" />
             </Button>

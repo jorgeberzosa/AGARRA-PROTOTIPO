@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Navbar, Footer, SectionHeader, EditorialCard, FilterChip } from "@/components/shared";
-import { articles, IMAGES } from "@/lib/dataEs";
+import { articles, IMAGES } from "@/lib/dataPt";
 
 const categories = ["All", "Interviews", "Festival Notes", "Director's Notes", "Community Highlights"];
 

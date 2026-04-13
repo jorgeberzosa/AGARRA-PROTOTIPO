@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/accordion";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { Navbar, Footer, SectionHeader, PricingCard } from "@/components/shared";
-import { passTiers, faqItems } from "@/lib/dataEs";
+import { passTiers, faqItems } from "@/lib/dataDe";
 
 export default function PassEs() {
   return (

@@ -23,7 +23,7 @@ import {
   StatusBadge,
   EventCard,
 } from "@/components/shared";
-import { films, articles, events, IMAGES } from "@/lib/dataEs";
+import { films, articles, events, IMAGES } from "@/lib/dataPt";
 
 export default function IndexEs() {
   const featuredFilm = films[0];

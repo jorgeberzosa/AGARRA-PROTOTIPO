@@ -26,7 +26,7 @@ import {
   RewardCard,
   EditorialCard,
 } from "@/components/shared";
-import { films, events, rewards, articles } from "@/lib/dataEs";
+import { films, events, rewards, articles } from "@/lib/dataPt";
 
 export default function FilmDetailEs() {
   const { id } = useParams<{ id: string }>();

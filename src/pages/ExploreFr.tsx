@@ -16,7 +16,7 @@ import {
   FilmCard,
   FilterChip,
 } from "@/components/shared";
-import { films, countries, genres, moods, festivals } from "@/lib/dataEs";
+import { films, countries, genres, moods, festivals } from "@/lib/dataFr";
 
 export default function ExploreEs() {
   const [searchQuery, setSearchQuery] = useState("");

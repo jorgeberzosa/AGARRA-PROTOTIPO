@@ -15,7 +15,7 @@ import {
   Globe,
 } from "lucide-react";
 import { Navbar, Footer, SectionHeader } from "@/components/shared";
-import { IMAGES } from "@/lib/dataEs";
+import { IMAGES } from "@/lib/dataIt";
 
 export default function CreatorsEs() {
   return (

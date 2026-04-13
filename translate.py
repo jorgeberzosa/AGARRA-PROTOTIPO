@@ -1,0 +1,232 @@
+import os
+import json
+
+translations = {
+    "fr": {
+        "Cine Iberoamericano Independiente": "Cinéma Indépendant Ibéro-américain",
+        "Cada película independiente se convierte en un ": "Chaque film indépendant devient une ",
+        "canal en vivo": "chaîne en direct",
+        "AGARRA es una plataforma curada donde el cine independiente se encuentra con la comunidad. Mira películas, únete a eventos en vivo, participa en conversaciones y obtén recompensas — todo en una experiencia premium.": "AGARRA est une plateforme sélectionnée où le cinéma indépendant rencontre la communauté. Regardez des films, participez à des événements en direct et obtenez des récompenses — le tout dans une expérience premium.",
+        "Explorar Películas": "Explorer les Films",
+        "Únete a AGARRA Pass": "Rejoindre le Pass AGARRA",
+        "+120 Películas": "+120 Films",
+        "+18K Miembros": "+18K Membres",
+        "Eventos Semanales": "Événements Hebdomadaires",
+        "Ver": "Regarder",
+        "Unirse al Canal": "Rejoindre la Chaîne",
+        "Evento": "Événement",
+        "¿Por qué AGARRA?": "Pourquoi AGARRA ?",
+        "Más que streaming. Un ecosistema vivo para el cine independiente.": "Plus que du streaming. Un écosystème vivant pour le cinéma indépendant.",
+        "Cine Independiente Curado": "Cinéma Indépendant Curé",
+        "Cada película es seleccionada a mano por su mérito artístico, significado cultural y poder narrativo. Sin algoritmos — solo buen gusto, contexto y cuidado editorial.": "Chaque film est sélectionné à la main pour son mérite artistique et sa signification culturelle. Pas d'algorithmes — juste un bon goût et un soin éditorial.",
+        "Participación de Audiencia en Vivo": "Participation du Public en Direct",
+        "Únete a watch parties, Q&As en vivo con directores, discusiones comunitarias y eventos en tiempo real. El cine se convierte en una experiencia social y compartida.": "Rejoignez des watch parties, des Q&A en direct avec des réalisateurs et des discussions. Le cinéma devient une expérience sociale et partagée.",
+        "Recompensas y Acceso": "Récompenses et Accès",
+        "Obtén coleccionables, desbloquea accesos exclusivos y construye tu pasaporte de cine. Tu participación tiene un valor real en el ecosistema AGARRA.": "Obtenez des objets de collection et débloquez des accès exclusifs. Votre participation a une valeur réelle dans l'écosystème AGARRA.",
+        "Canales en Vivo": "Chaînes en Direct",
+        "Comunidades activas con eventos, recompensas y mucha conversación.": "Des communautés actives avec des événements, des récompenses et des discussions.",
+        "Ver canales": "Voir les chaînes",
+        "Cómo Funciona": "Comment ça Marche",
+        "Tres simples pasos para unirte a la experiencia AGARRA.": "Trois étapes simples pour rejoindre l'expérience AGARRA.",
+        "Próximos Eventos": "Événements à Venir",
+        "Q&As en vivo, watch parties y paneles de discusión sucediendo esta semana.": "Q&A en direct, watch parties et panels de discussion prévus cette semaine.",
+        "Del Diario": "Du Journal",
+        "Entrevistas, notas de festivales y perspectivas críticas sobre cine independiente.": "Interviews, notes de festivals et perspectives critiques sur le cinéma indépendant.",
+        "Leer más": "Lire la suite",
+        "El cine es mejor cuando se ": "Le cinéma est meilleur lorsqu'il est ",
+        "comparte": "partagé",
+        "Únete a AGARRA y sé parte de una comunidad que valora la narrativa independiente, el intercambio cultural y el arte cinematográfico.": "Rejoignez AGARRA et faites partie d'une communauté qui valorise la narration indépendante et les échanges culturels.",
+        # Pass
+        "Tu pasaporte al nuevo cine": "Votre passeport pour le nouveau cinéma",
+        "Desbloquea acceso completo a watch parties exclusivas, eventos con directores, recompensas por participación y votación comunitaria en AGARRA.": "Débloquez l'accès complet aux watch parties exclusives et aux événements avec les réalisateurs.",
+        "Mensual": "Mensuel",
+        "Anual": "Annuel",
+        "Elegir Plan": "Choisir le Plan",
+        # Explorar
+        "Descubrir": "Découvrir",
+        "Explora nuestra colección curada de películas independientes transformadas en canales vivos.": "Explorez notre collection de films indépendants transformés en chaînes vivantes.",
+        "Buscar películas, directores, países...": "Rechercher des films, réalisateurs, pays...",
+        # Creators
+        "De Película a Comunidad": "D'un Film à une Communauté",
+        "Transforma tu obra en un ecosistema vivo. AGARRA empodera a cineastas permitiéndoles monetizar la participación del público.": "Transformez votre œuvre en un écosystème vivant. AGARRA donne des moyens d'action aux cinéastes.",
+        "Aplicar como Creador": "Postuler comme Créateur",
+        # Diario
+        "El Diario": "Le Journal",
+        "Noticias, entrevistas, cobertura de festivales y artículos editoriales explorando el paisaje del cine iberoamericano actual.": "Actualités, interviews, couverture de festivals et éditoriaux explorant le paysage cinématographique ibéro-américain.",
+        "Todos los Artículos": "Tous les Articles"
+    },
+    "de": {
+        "Cine Iberoamericano Independiente": "Iberoamerikanisches Independent-Kino",
+        "Cada película independiente se convierte en un ": "Jeder Independent-Film wird zu einem ",
+        "canal en vivo": "Live-Kanal",
+        "AGARRA es una plataforma curada donde el cine independiente se encuentra con la comunidad. Mira películas, únete a eventos en vivo, participa en conversaciones y obtén recompensas — todo en una experiencia premium.": "AGARRA ist eine kuratierte Plattform, auf der Independent-Kino auf die Community trifft. Sieh dir Filme an, nimm an Live-Events teil und erhalte Belohnungen.",
+        "Explorar Películas": "Filme Entdecken",
+        "Únete a AGARRA Pass": "Dem AGARRA Pass beitreten",
+        "+120 Películas": "+120 Filme",
+        "+18K Miembros": "+18K Mitglieder",
+        "Eventos Semanales": "Wöchentliche Events",
+        "Ver": "Ansehen",
+        "Unirse al Canal": "Kanal Beitreten",
+        "Evento": "Event",
+        "¿Por qué AGARRA?": "Warum AGARRA?",
+        "Más que streaming. Un ecosistema vivo para el cine independiente.": "Mehr als nur Streaming. Ein lebendiges Ökosystem für Independent-Kino.",
+        "Cine Independiente Curado": "Kuratiertes Independent-Kino",
+        "Cada película es seleccionada a mano por su mérito artístico, significado cultural y poder narrativo. Sin algoritmos — solo buen gusto, contexto y cuidado editorial.": "Jeder Film ist handverlesen aufgrund seines künstlerischen Werts. Keine Algorithmen — nur guter Geschmack.",
+        "Participación de Audiencia en Vivo": "Live-Zuschauerbeteiligung",
+        "Únete a watch parties, Q&As en vivo con directores, discusiones comunitarias y eventos en tiempo real. El cine se convierte en una experiencia social y compartida.": "Schließe dich Watch-Partys und Live-Q&As mit Regisseuren an. Kino wird zu einem sozialen Erlebnis.",
+        "Recompensas y Acceso": "Belohnungen & Zugang",
+        "Obtén coleccionables, desbloquea accesos exclusivos y construye tu pasaporte de cine. Tu participación tiene un valor real en el ecosistema AGARRA.": "Sammle Sammlerstücke und schalte exklusiven Zugang frei. Deine Teilnahme hat echten Wert.",
+        "Canales en Vivo": "Live-Kanäle",
+        "Comunidades activas con eventos, recompensas y mucha conversación.": "Aktive Communities mit Events, Belohnungen und vielen Diskussionen.",
+        "Ver canales": "Kanäle ansehen",
+        "Cómo Funciona": "Wie es Funktioniert",
+        "Tres simples pasos para unirte a la experiencia AGARRA.": "Drei einfache Schritte zur AGARRA-Erfahrung.",
+        "Próximos Eventos": "Kommende Events",
+        "Q&As en vivo, watch parties y paneles de discusión sucediendo esta semana.": "Live-Q&As, Watch-Partys und Panel-Diskussionen diese Woche.",
+        "Del Diario": "Aus dem Magazin",
+        "Entrevistas, notas de festivales y perspectivas críticas sobre cine independiente.": "Interviews, Festivalberichte und kritische Perspektiven zum Independent-Kino.",
+        "Leer más": "Mehr lesen",
+        "El cine es mejor cuando se ": "Kino ist besser, wenn es ",
+        "comparte": "geteilt wird",
+        "Únete a AGARRA y sé parte de una comunidad que valora la narrativa independiente, el intercambio cultural y el arte cinematográfico.": "Treten Sie AGARRA bei und werden Sie Teil einer Community, die unabhängiges Geschichtenerzählen schätzt.",
+        "Tu pasaporte al nuevo cine": "Dein Pass zum neuen Kino",
+        "Desbloquea acceso completo a watch parties exclusivas, eventos con directores, recompensas por participación y votación comunitaria en AGARRA.": "Schalte vollen Zugriff auf exklusive Watch-Partys und Events mit Regisseuren frei.",
+        "Mensual": "Monatlich",
+        "Anual": "Jährlich",
+        "Elegir Plan": "Plan Wählen",
+        "Descubrir": "Entdecken",
+        "Explora nuestra colección curada de películas independientes transformadas en canales vivos.": "Entdecke unsere kuratierte Sammlung, die in lebendige Kanäle verwandelt wurde.",
+        "Buscar películas, directores, países...": "Suche Filme, Regisseure, Länder...",
+        "De Película a Comunidad": "Vom Film zur Community",
+        "Transforma tu obra en un ecosistema vivo. AGARRA empodera a cineastas permitiéndoles monetizar la participación del público.": "Verwandle dein Werk in ein lebendiges Ökosystem.",
+        "Aplicar como Creador": "Als Schöpfer Bewerben",
+        "El Diario": "Das Magazin",
+        "Noticias, entrevistas, cobertura de festivales y artículos editoriales explorando el paisaje del cine iberoamericano actual.": "News, Interviews und Festivalberichterstattung.",
+        "Todos los Artículos": "Alle Artikel"
+    },
+    "it": {
+        "Cine Iberoamericano Independiente": "Cinema Indipendente Iberoamericano",
+        "Cada película independiente se convierte en un ": "Ogni film indipendente diventa un ",
+        "canal en vivo": "canale in diretta",
+        "AGARRA es una plataforma curada donde el cine independiente se encuentra con la comunidad. Mira películas, únete a eventos en vivo, participa en conversaciones y obtén recompensas — todo en una experiencia premium.": "AGARRA è una piattaforma in cui il cinema indipendente incontra la comunità. Guarda film, partecipa a eventi dal vivo e ottieni premi.",
+        "Explorar Películas": "Esplora i Film",
+        "Únete a AGARRA Pass": "Unisciti al Pass AGARRA",
+        "+120 Películas": "+120 Film",
+        "+18K Miembros": "+18K Membri",
+        "Eventos Semanales": "Eventi Settimanali",
+        "Ver": "Guarda",
+        "Unirse al Canal": "Unisciti al Canale",
+        "Evento": "Evento",
+        "¿Por qué AGARRA?": "Perché AGARRA?",
+        "Más que streaming. Un ecosistema vivo para el cine independiente.": "Più di uno streaming. Un ecosistema vivo per il cinema indipendente.",
+        "Cine Independiente Curado": "Cinema Indipendente Curato",
+        "Cada película es seleccionada a mano por su mérito artístico, significado cultural y poder narrativo. Sin algoritmos — solo buen gusto, contexto y cuidado editorial.": "Ogni film è selezionato a mano per il suo merito artistico. Niente algoritmi — solo buon gusto.",
+        "Participación de Audiencia en Vivo": "Coinvolgimento del Pubblico in Diretta",
+        "Únete a watch parties, Q&As en vivo con directores, discusiones comunitarias y eventos en tiempo real. El cine se convierte en una experiencia social y compartida.": "Unisciti a watch parties, Q&A dal vivo con registi e discussioni comunitarie.",
+        "Recompensas y Acceso": "Premi e Accesso",
+        "Obtén coleccionables, desbloquea accesos exclusivos y construye tu pasaporte de cine. Tu participación tiene un valor real en el ecosistema AGARRA.": "Ottieni oggetti da collezione e sblocca accessi esclusivi.",
+        "Canales en Vivo": "Canali in Diretta",
+        "Comunidades activas con eventos, recompensas y mucha conversación.": "Comunità attive con eventi, premi e tante discussioni.",
+        "Ver canales": "Guarda i canali",
+        "Cómo Funciona": "Come Funziona",
+        "Tres simples pasos para unirte a la experiencia AGARRA.": "Tre semplici passi per unirti all'esperienza AGARRA.",
+        "Próximos Eventos": "Prossimi Eventi",
+        "Q&As en vivo, watch parties y paneles de discusión sucediendo esta semana.": "Q&A, watch parties e panel happening questa settimana.",
+        "Del Diario": "Dal Diario",
+        "Entrevistas, notas de festivales y perspectivas críticas sobre cine independiente.": "Interviste, appunti di festival e prospettive critiche sul cinema indipendente.",
+        "Leer más": "Leggi di più",
+        "El cine es mejor cuando se ": "Il cinema è migliore quando si ",
+        "comparte": "condivide",
+        "Únete a AGARRA y sé parte de una comunidad que valora la narrativa independiente, el intercambio cultural y el arte cinematográfico.": "Unisciti ad AGARRA e fai parte di una comunità che valorizza la narrazione indipendente.",
+        "Tu pasaporte al nuevo cine": "Il tuo passaporto per il nuovo cinema",
+        "Desbloquea acceso completo a watch parties exclusivas, eventos con directores, recompensas por participación y votación comunitaria en AGARRA.": "Sblocca l'accesso completo a watch parties ed eventi esclusivi con i registi.",
+        "Mensual": "Mensile",
+        "Anual": "Annuale",
+        "Elegir Plan": "Scegli il Piano",
+        "Descubrir": "Scopri",
+        "Explora nuestra colección curada de películas independientes transformadas en canales vivos.": "Esplora la nostra collezione di film indipendenti.",
+        "Buscar películas, directores, países...": "Cerca film, registi, paesi...",
+        "De Película a Comunidad": "Da Film a Comunità",
+        "Transforma tu obra en un ecosistema vivo. AGARRA empodera a cineastas permitiéndoles monetizar la participación del público.": "Trasforma la tua opera in un ecosistema vivo.",
+        "Aplicar como Creador": "Diventa Creatore",
+        "El Diario": "Il Diario",
+        "Noticias, entrevistas, cobertura de festivales y artículos editoriales explorando el paisaje del cine iberoamericano actual.": "Notizie, interviste e copertura di festival.",
+        "Todos los Artículos": "Tutti gli Articoli"
+    },
+    "pt": {
+        "Cine Iberoamericano Independiente": "Cinema Independente Ibero-americano",
+        "Cada película independiente se convierte en un ": "Cada filme independente torna-se um ",
+        "canal en vivo": "canal ao vivo",
+        "AGARRA es una plataforma curada donde el cine independiente se encuentra con la comunidad. Mira películas, únete a eventos en vivo, participa en conversaciones y obtén recompensas — todo en una experiencia premium.": "O AGARRA é uma plataforma selecionada onde o cinema independente encontra a comunidade.",
+        "Explorar Películas": "Explorar Filmes",
+        "Únete a AGARRA Pass": "Aderir ao Pass AGARRA",
+        "+120 Películas": "+120 Filmes",
+        "+18K Miembros": "+18K Membros",
+        "Eventos Semanales": "Eventos Semanais",
+        "Ver": "Assistir",
+        "Unirse al Canal": "Aderir ao Canal",
+        "Evento": "Evento",
+        "¿Por qué AGARRA?": "Porquê o AGARRA?",
+        "Más que streaming. Un ecosistema vivo para el cine independiente.": "Mais do que streaming. Um ecossistema vivo.",
+        "Cine Independiente Curado": "Cinema Independente Com Curadoria",
+        "Cada película es seleccionada a mano por su mérito artístico, significado cultural y poder narrativo. Sin algoritmos — solo buen gusto, contexto y cuidado editorial.": "Cada filme é selecionado à mão pelo seu mérito artístico.",
+        "Participación de Audiencia en Vivo": "Participação do Público ao Vivo",
+        "Únete a watch parties, Q&As en vivo con directores, discusiones comunitarias y eventos en tiempo real. El cine se convierte en una experiencia social y compartida.": "Junte-se a watch parties, Q&As ao vivo e discussões em tempo real.",
+        "Recompensas y Acceso": "Recompensas e Acesso",
+        "Obtén coleccionables, desbloquea accesos exclusivos y construye tu pasaporte de cine. Tu participación tiene un valor real en el ecosistema AGARRA.": "Obtenha colecionáveis e desbloqueie acesso exclusivo.",
+        "Canales en Vivo": "Canais ao Vivo",
+        "Comunidades activas con eventos, recompensas y mucha conversación.": "Comunidades ativas com eventos, recompensas e muita conversa.",
+        "Ver canales": "Ver canais",
+        "Cómo Funciona": "Como Funciona",
+        "Tres simples pasos para unirte a la experiencia AGARRA.": "Três passos simples para a experiência AGARRA.",
+        "Próximos Eventos": "Próximos Eventos",
+        "Q&As en vivo, watch parties y paneles de discusión sucediendo esta semana.": "Q&As ao vivo, watch parties e painéis de discussão esta semana.",
+        "Del Diario": "Do Jornal",
+        "Entrevistas, notas de festivales y perspectivas críticas sobre cine independiente.": "Entrevistas, notas de festivais e perspetivas críticas.",
+        "Leer más": "Ler mais",
+        "El cine es mejor cuando se ": "O cinema é melhor quando é ",
+        "comparte": "partilhado",
+        "Únete a AGARRA y sé parte de una comunidad que valora la narrativa independiente, el intercambio cultural y el arte cinematográfico.": "Junte-se ao AGARRA e faça parte de uma comunidade independente.",
+        "Tu pasaporte al nuevo cine": "O teu passaporte para o novo cinema",
+        "Desbloquea acceso completo a watch parties exclusivas, eventos con directores, recompensas por participación y votación comunitaria en AGARRA.": "Desbloqueie acesso completo a watch parties exclusivas.",
+        "Mensual": "Mensal",
+        "Anual": "Anual",
+        "Elegir Plan": "Escolher Plano",
+        "Descubrir": "Descobrir",
+        "Explora nuestra colección curada de películas independientes transformadas en canales vivos.": "Explore a nossa coleção selecionada transformada em canais vivos.",
+        "Buscar películas, directores, países...": "Pesquisar filmes, realizadores, países...",
+        "De Película a Comunidad": "De Filme a Comunidade",
+        "Transforma tu obra en un ecosistema vivo. AGARRA empodera a cineastas permitiéndoles monetizar la participación del público.": "Transforma o teu filme num ecossistema vivo.",
+        "Aplicar como Creador": "Ser Criador",
+        "El Diario": "O Jornal",
+        "Noticias, entrevistas, cobertura de festivales y artículos editoriales explorando el paisaje del cine iberoamericano actual.": "Notícias, entrevistas e cobertura de festivais.",
+        "Todos los Artículos": "Todos os Artigos"
+    }
+}
+
+target_files = [
+    'Index', 'Explore', 'Creators', 'Pass', 'Journal'
+]
+
+directory = 'src/pages'
+
+for lang, dictionary in translations.items():
+    suffix = lang.capitalize() + '.tsx'
+    
+    for basename in target_files:
+        filepath = os.path.join(directory, basename + suffix)
+        if os.path.exists(filepath):
+            with open(filepath, 'r', encoding='utf-8') as f:
+                content = f.read()
+            
+            for es_text, tr_text in dictionary.items():
+                content = content.replace(es_text, tr_text)
+                
+            # Quick fix for dataEs.ts -> dataFr.ts? We can just keep it pointing to dataEs 
+            # Or dataEn based on availability. Let's point them to dataEs for uniform data.
+            # No data file changes needed, the UI shell is translated.
+
+            with open(filepath, 'w', encoding='utf-8') as f:
+                f.write(content)
+
+print("Translations applied successfully.")

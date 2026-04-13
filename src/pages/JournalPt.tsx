@@ -20,7 +20,7 @@ export default function JournalEs() {
         {/* Header */}
         <div className="mb-12">
           <SectionHeader
-            title="El Diario"
+            title="O Jornal"
             subtitle="Historias, entrevistas y notas de campo del ecosistema del cine iberoamericano."
           />
         </div>

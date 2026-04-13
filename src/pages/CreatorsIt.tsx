@@ -56,11 +56,11 @@ export default function CreatorsEs() {
             <Link to="/creators/dashboard">
               <Button className="bg-[#C8A97E] text-[#0A0A0A] hover:bg-[#D4BA94] font-medium rounded-md px-8 py-6 text-base shadow-[0_0_15px_rgba(200,169,126,0.3)]">
                 <Sparkles size={18} className="mr-2" />
-                Acceder al Dashboard (Demo Version)
+                Acceder al Dashboard (Demo Guardasion)
               </Button>
             </Link>
             <Button className="bg-[#1A1A1A] text-[#F5F0EB] hover:bg-[#262626] font-medium rounded-md px-8 py-6 text-base border border-[#C8A97E]/20">
-              Aplicar como Creador
+              Diventa Creatore
               <ArrowRight size={18} className="ml-2" />
             </Button>
             <Link to="/pass">
@@ -68,7 +68,7 @@ export default function CreatorsEs() {
                 variant="outline"
                 className="border-[#C8A97E]/40 text-[#C8A97E] hover:bg-[#C8A97E]/10 !bg-transparent rounded-md px-8 py-6 text-base"
               >
-                Ver Plan Creator
+                Guarda Plan Creator
               </Button>
             </Link>
           </div>
@@ -142,7 +142,7 @@ export default function CreatorsEs() {
       <section className="py-24 bg-[#0E0E0E]">
         <div className="max-w-5xl mx-auto px-6">
           <SectionHeader
-            title="Cómo Funciona"
+            title="Come Funziona"
             subtitle="Desde la presentación hasta un canal próspero en cuatro pasos simples."
           />
           <div className="space-y-6">

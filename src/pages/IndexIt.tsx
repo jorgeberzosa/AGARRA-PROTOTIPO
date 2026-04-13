@@ -49,13 +49,13 @@ export default function IndexEs() {
             <div className="inline-flex items-center gap-2 bg-[#C8A97E]/10 border border-[#C8A97E]/20 rounded-full px-4 py-1.5 mb-8">
               <Sparkles size={14} className="text-[#C8A97E]" />
               <span className="text-xs text-[#C8A97E] font-medium">
-                Cine Iberoamericano Independiente
+                Cinema Indipendente Iberoamericano
               </span>
             </div>
 
             <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-[#F5F0EB] leading-[1.05] tracking-tight">
               Cada película independiente se convierte en un{" "}
-              <span className="text-[#C8A97E] italic">canal en vivo</span>
+              <span className="text-[#C8A97E] italic">canale in diretta</span>
             </h1>
 
             <p className="mt-6 text-lg text-[#9A9590] leading-relaxed max-w-lg">
@@ -67,7 +67,7 @@ export default function IndexEs() {
             <div className="mt-10 flex flex-wrap items-center gap-4">
               <Link to="/explore">
                 <Button className="bg-[#C8A97E] text-[#0A0A0A] hover:bg-[#D4BA94] font-medium rounded-md px-8 py-6 text-base">
-                  Explorar Películas
+                  Esplora i Film
                   <ArrowRight size={18} className="ml-2" />
                 </Button>
               </Link>
@@ -76,7 +76,7 @@ export default function IndexEs() {
                   variant="outline"
                   className="border-[#C8A97E]/40 text-[#C8A97E] hover:bg-[#C8A97E]/10 !bg-transparent rounded-md px-8 py-6 text-base"
                 >
-                  Únete a AGARRA Pass
+                  Unisciti al Pass AGARRA
                 </Button>
               </Link>
             </div>
@@ -84,15 +84,15 @@ export default function IndexEs() {
             <div className="mt-12 flex items-center gap-8 text-sm text-[#9A9590]">
               <div className="flex items-center gap-2">
                 <Film size={16} className="text-[#C8A97E]" />
-                <span>+120 Películas</span>
+                <span>+120 Film</span>
               </div>
               <div className="flex items-center gap-2">
                 <Users size={16} className="text-[#C8A97E]" />
-                <span>+18K Miembros</span>
+                <span>+18K Membri</span>
               </div>
               <div className="flex items-center gap-2">
                 <Calendar size={16} className="text-[#C8A97E]" />
-                <span>Eventos Semanales</span>
+                <span>Eventi Settimanali</span>
               </div>
             </div>
           </div>
@@ -126,10 +126,10 @@ export default function IndexEs() {
                   </p>
                   <div className="mt-5 flex items-center gap-3">
                     <Button size="sm" className="bg-[#C8A97E] text-[#0A0A0A] hover:bg-[#D4BA94] rounded-md text-xs font-medium">
-                      <Play size={14} className="mr-1 fill-[#0A0A0A]" /> Ver
+                      <Play size={14} className="mr-1 fill-[#0A0A0A]" /> Guarda
                     </Button>
                     <Button size="sm" className="bg-transparent border border-[#C8A97E]/40 text-[#C8A97E] hover:bg-[#C8A97E]/10 rounded-md text-xs">
-                      <Users size={14} className="mr-1" /> Unirse al Canal
+                      <Users size={14} className="mr-1" /> Unisciti al Canale
                     </Button>
                     <Button size="sm" className="bg-transparent border border-[#262626] text-[#9A9590] hover:border-[#C8A97E]/30 hover:text-[#C8A97E] rounded-md text-xs hover:bg-transparent">
                       <Calendar size={14} className="mr-1" /> Evento
@@ -145,28 +145,28 @@ export default function IndexEs() {
       {/* ─── Why AGARRA ─── */}
       <section className="max-w-7xl mx-auto px-6 py-24">
         <SectionHeader
-          title="¿Por qué AGARRA?"
-          subtitle="Más que streaming. Un ecosistema vivo para el cine independiente."
+          title="Perché AGARRA?"
+          subtitle="Più di uno streaming. Un ecosistema vivo per il cinema indipendente."
         />
         <div className="grid md:grid-cols-3 gap-6">
           {[
             {
               icon: <Eye size={28} />,
-              title: "Cine Independiente Curado",
+              title: "Cinema Indipendente Curato",
               description:
-                "Cada película es seleccionada a mano por su mérito artístico, significado cultural y poder narrativo. Sin algoritmos — solo buen gusto, contexto y cuidado editorial.",
+                "Ogni film è selezionato a mano per il suo merito artistico. Niente algoritmi — solo buon gusto.",
             },
             {
               icon: <Heart size={28} />,
-              title: "Participación de Audiencia en Vivo",
+              title: "Coinvolgimento del Pubblico in Diretta",
               description:
-                "Únete a watch parties, Q&As en vivo con directores, discusiones comunitarias y eventos en tiempo real. El cine se convierte en una experiencia social y compartida.",
+                "Unisciti a watch parties, Q&A dal vivo con registi e discussioni comunitarie.",
             },
             {
               icon: <Wallet size={28} />,
-              title: "Recompensas y Acceso",
+              title: "Premi e Accesso",
               description:
-                "Obtén coleccionables, desbloquea accesos exclusivos y construye tu pasaporte de cine. Tu participación tiene un valor real en el ecosistema AGARRA.",
+                "Ottieni oggetti da collezione e sblocca accessi esclusivi.",
             },
           ].map((feature) => (
             <div
@@ -190,9 +190,9 @@ export default function IndexEs() {
       {/* ─── Live Channels ─── */}
       <section className="max-w-7xl mx-auto px-6 py-24">
         <SectionHeader
-          title="Canales en Vivo"
-          subtitle="Comunidades activas con eventos, recompensas y mucha conversación."
-          action="Ver canales"
+          title="Canali in Diretta"
+          subtitle="Comunità attive con eventi, premi e tante discussioni."
+          action="Guarda canales"
           actionLink="/explore"
         />
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -206,14 +206,14 @@ export default function IndexEs() {
       <section className="py-24 bg-[#0E0E0E]">
         <div className="max-w-7xl mx-auto px-6">
           <SectionHeader
-            title="Cómo Funciona"
-            subtitle="Tres simples pasos para unirte a la experiencia AGARRA."
+            title="Come Funziona"
+            subtitle="Tre semplici passi per unirti all'esperienza AGARRA."
           />
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
                 step: "01",
-                title: "Ver",
+                title: "Guarda",
                 description:
                   "Explora nuestra colección curada de cine iberoamericano. Cada título es seleccionado por su valor.",
                 icon: <Play size={32} className="fill-[#C8A97E]" />,
@@ -255,8 +255,8 @@ export default function IndexEs() {
       {/* ─── Upcoming Events ─── */}
       <section className="max-w-7xl mx-auto px-6 py-24">
         <SectionHeader
-          title="Próximos Eventos"
-          subtitle="Q&As en vivo, watch parties y paneles de discusión sucediendo esta semana."
+          title="Prossimi Eventi"
+          subtitle="Q&A, watch parties e panel happening questa settimana."
         />
         <div className="grid md:grid-cols-3 gap-6">
           {events.map((event) => (
@@ -268,9 +268,9 @@ export default function IndexEs() {
       {/* ─── From the Journal ─── */}
       <section className="max-w-7xl mx-auto px-6 py-24">
         <SectionHeader
-          title="Del Diario"
-          subtitle="Entrevistas, notas de festivales y perspectivas críticas sobre cine independiente."
-          action="Leer más"
+          title="Dal Diario"
+          subtitle="Interviste, appunti di festival e prospettive critiche sul cinema indipendente."
+          action="Leggi di più"
           actionLink="/journal"
         />
         <div className="space-y-6">
@@ -288,7 +288,7 @@ export default function IndexEs() {
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h2 className="font-display text-4xl md:text-5xl font-bold text-[#F5F0EB] leading-tight">
             El cine es mejor cuando se{" "}
-            <span className="text-[#C8A97E] italic">comparte</span>
+            <span className="text-[#C8A97E] italic">condivide</span>
           </h2>
           <p className="mt-6 text-lg text-[#9A9590] max-w-2xl mx-auto leading-relaxed">
             Únete a AGARRA y sé parte de una comunidad que valora la narrativa
@@ -297,7 +297,7 @@ export default function IndexEs() {
           <div className="mt-10 flex flex-wrap justify-center gap-4">
             <Link to="/pass">
               <Button className="bg-[#C8A97E] text-[#0A0A0A] hover:bg-[#D4BA94] font-medium rounded-md px-8 py-6 text-base">
-                Únete a AGARRA Pass
+                Unisciti al Pass AGARRA
                 <ArrowRight size={18} className="ml-2" />
               </Button>
             </Link>
@@ -306,7 +306,7 @@ export default function IndexEs() {
                 variant="outline"
                 className="border-[#C8A97E]/40 text-[#C8A97E] hover:bg-[#C8A97E]/10 !bg-transparent rounded-md px-8 py-6 text-base"
               >
-                Explorar Películas
+                Esplora i Film
               </Button>
             </Link>
           </div>

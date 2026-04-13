@@ -59,9 +59,7 @@ export default function IndexEs() {
             </h1>
 
             <p className="mt-6 text-lg text-[#9A9590] leading-relaxed max-w-lg">
-              AGARRA es una plataforma curada donde el cine independiente se encuentra con la comunidad.
-              Mira películas, únete a eventos en vivo, participa en conversaciones y obtén
-              recompensas — todo en una experiencia premium.
+              O AGARRA é uma plataforma selecionada onde o cinema independente encontra a comunidade.
             </p>
 
             <div className="mt-10 flex flex-wrap items-center gap-4">
@@ -291,8 +289,7 @@ export default function IndexEs() {
             <span className="text-[#C8A97E] italic">partilhado</span>
           </h2>
           <p className="mt-6 text-lg text-[#9A9590] max-w-2xl mx-auto leading-relaxed">
-            Únete a AGARRA y sé parte de una comunidad que valora la narrativa
-            independiente, el intercambio cultural y el arte cinematográfico.
+            Junte-se ao AGARRA e faça parte de uma comunidade independente.
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-4">
             <Link to="/pass">

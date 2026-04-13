@@ -1,0 +1,34 @@
+{
+  "nav": {
+    "explore": "Entdecken",
+    "channels": "Kanäle",
+    "journal": "Magazin",
+    "pass": "Pass",
+    "creators": "Für Schöpfer",
+    "signin": "Anmelden",
+    "join_pass": "Pass beitreten",
+    "my_account": "Mein Konto",
+    "apply_creator": "Als Schöpfer bewerben"
+  },
+  "auth": {
+    "login_title": "Willkommen zurück",
+    "register_title": "Erstelle deinen Pass",
+    "login_desc": "Gib deine Daten ein, um fortzufahren",
+    "register_desc": "Tritt dem Independent-Kino-Ökosystem bei",
+    "name_label": "Vollständiger Name",
+    "email_label": "E-Mail",
+    "password_label": "Passwort",
+    "login_btn": "Anmelden",
+    "register_btn": "Registrieren",
+    "no_account": "Noch kein Konto?",
+    "has_account": "Bereits ein Konto?",
+    "register_link": "Hier registrieren",
+    "login_link": "Anmelden",
+    "back": "Zurück zur Startseite",
+    "login_success": "Erfolgreich angemeldet",
+    "login_error": "Ungültige E-Mail oder Passwort",
+    "missing_fields": "Bitte alle Felder ausfüllen",
+    "register_success": "Konto erfolgreich erstellt",
+    "register_error": "E-Mail ist bereits in Verwendung"
+  }
+}

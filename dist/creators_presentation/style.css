@@ -1,0 +1,171 @@
+:root {
+  --primary-color: #FF6B00;
+  --secondary-color: #00F0FF;
+  --purple-color: #B026FF;
+  --bg-dark: #030406;
+  --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+html, body {
+  margin: 0; padding: 0;
+  width: 100%; height: 100vh;
+  background-color: var(--bg-dark);
+  font-family: 'Montserrat', sans-serif;
+  overflow: hidden;
+  color: #fff;
+}
+
+/* Navbar estática minimalista */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 80px;
+  background: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, transparent 100%);
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0 50px; box-sizing: border-box;
+  z-index: 100;
+  pointer-events: none; /* No bloquear interacción con fondo */
+}
+.navbar > * { pointer-events: auto; }
+.logo img { height: 40px; }
+
+.navbar nav { display: flex; gap: 40px; }
+.navbar nav a {
+  color: rgba(255,255,255,0.7); text-decoration: none;
+  font-size: 13px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 2px; transition: color 0.4s;
+}
+.navbar nav a:hover { color: #fff; text-shadow: 0 0 10px rgba(255,255,255,0.8); }
+
+/* Viñeta general */
+.global-vignette {
+  position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+  box-shadow: inset 0 0 150px rgba(0,0,0,0.9);
+  pointer-events: none; z-index: 90;
+}
+
+/* Sistema de Scroll (sin Snap, desplazamiento más natural tipo Parallax Web) */
+main#scroll-container {
+  height: 100vh; overflow-y: scroll; scroll-behavior: smooth;
+  perspective: 1500px;
+}
+main#scroll-container::-webkit-scrollbar { width: 8px; }
+main#scroll-container::-webkit-scrollbar-track { background: var(--bg-dark); }
+main#scroll-container::-webkit-scrollbar-thumb { background: rgba(255,107,0,0.5); border-radius: 10px; }
+
+/* Secciones grandes */
+.slide-section {
+  height: 120vh; /* Mayor al 100vh para permitir Parallax Scroll interno */
+  width: 100%;
+  display: flex; justify-content: center; align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Contenedor Interactivo 3D (Mouse Hover API) */
+.tilt-wrapper {
+  position: relative;
+  width: 90vw;
+  max-width: 1400px;
+  height: 75vh;
+  perspective: 2000px;
+  transform-style: preserve-3d;
+  transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
+}
+
+/* La Imagen, escala y animación continua (Zoom In) */
+.slide-image {
+  width: 100%; height: 100%;
+  object-fit: contain;
+  border-radius: 15px;
+  filter: brightness(0.7) contrast(1.1);
+  transform: translateZ(0) scale(1);
+  transition: filter 1s ease, transform 0.1s ease;
+}
+
+/* Cuando está en vista, se anima lentamente y brilla */
+.slide-section.is-active .slide-image {
+  filter: brightness(1) contrast(1.1);
+  animation: ultraSlowZoom 30s ease-out forwards;
+}
+
+@keyframes ultraSlowZoom {
+  0% { transform: scale(1) translateZ(0); }
+  100% { transform: scale(1.08) translateZ(50px); }
+}
+
+/* Reflejo estilo Glare (Brillo de Cristal) arrastrado con JS */
+.glare {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  border-radius: 15px;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.15) 0%, transparent 60%);
+  opacity: 0;
+  transform: translateZ(5px);
+  transition: opacity 0.5s;
+}
+.tilt-wrapper:hover .glare { opacity: 1; }
+
+/* Bioluminiscencia estática en el fondo para ambientación */
+.image-glow {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 50vw; height: 50vh; border-radius: 50%;
+  filter: blur(120px); z-index: -1; opacity: 0.1;
+  transition: opacity 2s;
+}
+.slide-section.is-active .image-glow { opacity: 0.35; animation: pulseGlow 10s infinite alternate; }
+
+@keyframes pulseGlow {
+  0% { transform: translate(-50%, -50%) scale(1); }
+  100% { transform: translate(-50%, -50%) scale(1.2); }
+}
+.color-primary { background: var(--primary-color); }
+.color-cyan { background: var(--secondary-color); }
+.color-purple { background: var(--purple-color); }
+.color-alert { background: #FF3B30; }
+
+/* Call To Action Modificado */
+.cta-overlay {
+  position: absolute; bottom: 15%; right: 10%;
+  background: rgba(10, 10, 15, 0.85); backdrop-filter: blur(25px);
+  padding: 40px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.8), 0 0 30px rgba(255,107,0,0.1);
+  text-align: center;
+  transform: translateY(100px) rotateX(20deg);
+  opacity: 0; transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 50;
+}
+.slide-section.is-active .cta-overlay {
+  transform: translateY(0) rotateX(0deg); opacity: 1; transition-delay: 0.5s;
+}
+
+.cta-overlay h3 { font-family: 'Outfit'; font-size: 28px; margin: 0 0 15px 0; color: #fff; }
+.cta-overlay p { color: #b0bac5; margin: 0 0 30px 0; font-size: 15px; }
+.btn-primary {
+  display: inline-block; padding: 18px 40px; background: #FF6B00; color: #fff;
+  text-decoration: none; font-family: 'Outfit'; font-weight: 700; text-transform: uppercase;
+  border-radius: 8px; letter-spacing: 2px;
+  box-shadow: 0 10px 20px rgba(255, 107, 0, 0.3); transition: all 0.3s;
+}
+.btn-primary:hover {
+  background: #ff8533; box-shadow: 0 15px 30px rgba(255, 107, 0, 0.6);
+  transform: translateY(-3px) scale(1.02);
+}
+
+.scroll-indicator {
+  position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 10px; opacity: 0.5;
+}
+.scroll-indicator span { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; }
+.mouse { width: 22px; height: 35px; border: 2px solid #fff; border-radius: 12px; position: relative; }
+.wheel { width: 4px; height: 6px; background: #FF6B00; border-radius: 2px; position: absolute; top: 6px; left: 50%; transform: translateX(-50%); animation: wheelFade 1.5s infinite; }
+
+@keyframes wheelFade { 0% { top: 6px; opacity: 1; } 100% { top: 20px; opacity: 0; } }
+
+@media (max-width: 768px) {
+  .tilt-wrapper { width: 95vw; height: auto; aspect-ratio: 16/9; perspective: none; }
+  .navbar nav { display: none; }
+  .cta-overlay { bottom: 5%; right: 5%; left: 5%; padding: 25px; transform: translateY(50px); }
+}

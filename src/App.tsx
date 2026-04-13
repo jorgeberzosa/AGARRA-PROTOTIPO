@@ -3,6 +3,9 @@ import { TooltipProvider } from '@/components/ui/tooltip';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { LanguageProvider } from './lib/LanguageContext';
+import { AuthProvider } from './lib/AuthContext';
+import './lib/i18n';
+import AuthPage from './pages/Auth';
 import Index from './pages/Index';
 import Explore from './pages/Explore';
 import FilmDetail from './pages/FilmDetail';
@@ -23,12 +26,14 @@ const queryClient = new QueryClient();
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <LanguageProvider>
-      <TooltipProvider>
+      <AuthProvider>
+        <TooltipProvider>
         <PasswordGate>
           <Toaster />
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Index />} />
+              <Route path="/auth" element={<AuthPage />} />
               <Route path="/explore" element={<Explore />} />
               <Route path="/film/:id" element={<FilmDetail />} />
               <Route path="/pass" element={<Pass />} />
@@ -45,7 +50,8 @@ const App = () => (
             </Routes>
           </BrowserRouter>
         </PasswordGate>
-      </TooltipProvider>
+        </TooltipProvider>
+      </AuthProvider>
     </LanguageProvider>
   </QueryClientProvider>
 );

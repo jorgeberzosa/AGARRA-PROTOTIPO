@@ -1,0 +1,20 @@
+<svg width="200" height="60" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&amp;display=swap');
+    .text { font-family: 'Outfit', sans-serif; font-size: 36px; font-weight: 400; dominant-baseline: middle; }
+    .white { fill: #ffffff; }
+    .orange { fill: #FF6B00; }
+    .lines { stroke: #ffffff; stroke-width: 3.5; stroke-linecap: round; }
+  </style>
+  <text x="10" y="32" class="text white">a</text>
+  <g transform="translate(38, 14)">
+    <line x1="0" y1="20" x2="16" y2="8" class="lines"/>
+    <line x1="0" y1="28" x2="16" y2="16" class="lines"/>
+    <line x1="0" y1="36" x2="16" y2="24" class="lines"/>
+  </g>
+  <text x="65" y="32" class="text white">6</text>
+  <text x="88" y="32" class="text orange">a</text>
+  <text x="110" y="32" class="text white">R</text>
+  <text x="135" y="32" class="text white">R</text>
+  <text x="160" y="32" class="text white">a</text>
+</svg>

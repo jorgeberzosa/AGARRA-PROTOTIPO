@@ -1,7 +1,13 @@
 import React, { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import {
   Play,
   Users,
@@ -21,28 +27,38 @@ import {
   Eye,
   Heart,
   Wallet,
+  ChevronDown,
+  LogOut,
+  User as UserIcon,
 } from "lucide-react";
 import type { Film as FilmType, Article, Event as EventType, Reward } from "@/lib/data";
-import { useLanguage } from "@/lib/LanguageContext";
+import { useTranslation } from "react-i18next";
+import { useAuth } from "@/lib/AuthContext";
 
 /* ─── Navbar ─── */
 export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
-  const { language, toggleLanguage } = useLanguage();
+  const navigate = useNavigate();
+  const { t, i18n } = useTranslation();
+  const { user, logout } = useAuth();
 
-  const links = language === "es" ? [
-    { to: "/explore", label: "Explorar" },
-    { to: "/film/la-memoria-del-agua", label: "Canales" },
-    { to: "/journal", label: "Diario" },
-    { to: "/pass", label: "Pass" },
-    { to: "/creators", label: "Para Creadores" },
-  ] : [
-    { to: "/explore", label: "Explore" },
-    { to: "/film/la-memoria-del-agua", label: "Channels" },
-    { to: "/journal", label: "Journal" },
-    { to: "/pass", label: "Pass" },
-    { to: "/creators", label: "For Creators" },
+  const currentLang = i18n.language?.substring(0, 2) || 'es';
+  const languages = [
+    { code: 'es', label: 'ES' },
+    { code: 'en', label: 'EN' },
+    { code: 'fr', label: 'FR' },
+    { code: 'de', label: 'DE' },
+    { code: 'it', label: 'IT' },
+    { code: 'pt', label: 'PT' },
+  ];
+
+  const links = [
+    { to: "/explore", label: t('nav.explore', 'Explorar') },
+    { to: "/film/la-memoria-del-agua", label: t('nav.channels', 'Canales') },
+    { to: "/journal", label: t('nav.journal', 'Diario') },
+    { to: "/pass", label: t('nav.pass', 'Pass') },
+    { to: "/creators", label: t('nav.creators', 'Para Creadores') },
   ];
 
   const isActive = (path: string) => location.pathname === path;
@@ -72,35 +88,68 @@ export function Navbar() {
         </div>
 
         <div className="hidden md:flex items-center gap-4">
-          <button
-            onClick={toggleLanguage}
-            className="text-xs font-bold text-[#9A9590] hover:text-[#C8A97E] transition-colors uppercase tracking-widest px-2"
-          >
-            {language === 'es' ? 'EN' : 'ES'}
-          </button>
-          <Button
-            variant="ghost"
-            size="sm"
-            className="text-[#9A9590] hover:text-[#F5F0EB] hover:bg-transparent"
-          >
-            {language === 'es' ? 'Ingresar' : 'Sign In'}
-          </Button>
-          <Button
-            size="sm"
-            className="bg-[#C8A97E] text-[#0A0A0A] hover:bg-[#D4BA94] font-medium rounded-md"
-          >
-            {language === 'es' ? 'Únete al Pass' : 'Join Pass'}
-          </Button>
+          <DropdownMenu>
+            <DropdownMenuTrigger className="flex items-center gap-1 text-xs font-bold text-[#9A9590] hover:text-[#C8A97E] uppercase focus:outline-none">
+              {currentLang} <ChevronDown size={14} />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="bg-[#141414] border-[#262626] text-[#F5F0EB]">
+              {languages.map((lng) => (
+                <DropdownMenuItem key={lng.code} onClick={() => i18n.changeLanguage(lng.code)} className="focus:bg-[#C8A97E]/10 cursor-pointer text-xs">
+                  {lng.label}
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+
+          {user ? (
+            <DropdownMenu>
+              <DropdownMenuTrigger className="flex items-center gap-2 text-sm text-[#F5F0EB] hover:text-[#C8A97E] focus:outline-none ml-2 bg-[#1A1A1A] border border-[#262626] rounded-full px-3 py-1.5 focus:ring-0">
+                <UserIcon size={14} /> <span className="font-medium">{user.name.split(' ')[0]}</span>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="bg-[#141414] border-[#262626]">
+                <DropdownMenuItem onClick={() => navigate('/creators/dashboard')} className="focus:bg-[#C8A97E]/10 text-sm cursor-pointer text-[#F5F0EB]">
+                  {t('nav.my_account', 'Mi Cuenta')}
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={logout} className="focus:bg-red-500/10 text-sm text-red-500 cursor-pointer font-medium mt-1">
+                  <LogOut size={14} className="mr-2" /> Salir
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          ) : (
+            <>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => navigate('/auth')}
+                className="text-[#9A9590] hover:text-[#F5F0EB] hover:bg-transparent"
+              >
+                {t('nav.signin', 'Ingresar')}
+              </Button>
+              <Button
+                size="sm"
+                onClick={() => navigate('/auth')}
+                className="bg-[#C8A97E] text-[#0A0A0A] hover:bg-[#D4BA94] font-medium rounded-md"
+              >
+                {t('nav.join_pass', 'Únete al Pass')}
+              </Button>
+            </>
+          )}
         </div>
 
         {/* Mobile toggle */}
         <div className="md:hidden flex items-center gap-4 text-[#F5F0EB]">
-          <button
-            onClick={toggleLanguage}
-            className="text-xs font-bold text-[#9A9590] hover:text-[#C8A97E] uppercase"
-          >
-            {language === 'es' ? 'EN' : 'ES'}
-          </button>
+          <DropdownMenu>
+            <DropdownMenuTrigger className="flex items-center gap-1 text-xs font-bold text-[#9A9590] hover:text-[#C8A97E] uppercase focus:outline-none">
+              {currentLang} <ChevronDown size={14} />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="bg-[#141414] border-[#262626] text-[#F5F0EB]">
+              {languages.map((lng) => (
+                <DropdownMenuItem key={lng.code} onClick={() => i18n.changeLanguage(lng.code)} className="focus:bg-[#C8A97E]/10 cursor-pointer text-xs">
+                  {lng.label}
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
           <button onClick={() => setMobileOpen(!mobileOpen)}>
             {mobileOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -123,12 +172,28 @@ export function Navbar() {
             </Link>
           ))}
           <div className="pt-4 border-t border-[#262626] flex flex-col gap-3">
-            <Button variant="ghost" className="text-[#9A9590] justify-start hover:bg-transparent">
-              {language === 'es' ? 'Ingresar' : 'Sign In'}
-            </Button>
-            <Button className="bg-[#C8A97E] text-[#0A0A0A] hover:bg-[#D4BA94] font-medium">
-              {language === 'es' ? 'Únete al Pass' : 'Join Pass'}
-            </Button>
+            {user ? (
+               <div className="flex flex-col gap-3">
+                 <div className="flex items-center gap-2 text-[#F5F0EB] px-2 py-1">
+                   <UserIcon size={16} /> <span className="font-semibold">{user.name}</span>
+                 </div>
+                 <Button variant="ghost" onClick={() => { setMobileOpen(false); navigate('/creators/dashboard'); }} className="text-[#9A9590] justify-start hover:bg-transparent">
+                   {t('nav.my_account', 'Mi Cuenta')}
+                 </Button>
+                 <Button variant="ghost" onClick={() => { setMobileOpen(false); logout(); navigate('/'); }} className="text-red-400 justify-start hover:bg-red-500/10">
+                   Salir
+                 </Button>
+               </div>
+            ) : (
+              <>
+                <Button variant="ghost" onClick={() => { setMobileOpen(false); navigate('/auth'); }} className="text-[#9A9590] justify-start hover:bg-transparent">
+                  {t('nav.signin', 'Ingresar')}
+                </Button>
+                <Button onClick={() => { setMobileOpen(false); navigate('/auth'); }} className="bg-[#C8A97E] text-[#0A0A0A] hover:bg-[#D4BA94] font-medium">
+                  {t('nav.join_pass', 'Únete al Pass')}
+                </Button>
+              </>
+            )}
           </div>
         </div>
       )}
@@ -138,33 +203,19 @@ export function Navbar() {
 
 /* ─── Footer ─── */
 export function Footer() {
-  const { language } = useLanguage();
+  const { t } = useTranslation();
 
-  const textEs = {
-    desc: "Una plataforma curada para cine independiente iberoamericano. Ve, participa, gana.",
-    platform: "Plataforma",
-    platformLinks: ["Explorar", "Canales en Vivo", "Eventos", "Recompensas"],
-    community: "Comunidad",
-    communityLinks: ["Diario", "AGARRA Pass", "Para Creadores", "Festivales Aliados"],
-    about: "Nosotros",
-    aboutLinks: ["Nuestra Misión", "Equipo", "Prensa", "Contacto"],
-    rights: "Todos los derechos reservados.",
-    legal: ["Privacidad", "Términos", "Cookies"],
+  const text = {
+    desc: t('footer.desc', "Una plataforma curada para cine independiente iberoamericano. Ve, participa, gana."),
+    platform: t('footer.platform', "Plataforma"),
+    platformLinks: [t('footer.explore', "Explorar"), t('footer.live', "Canales en Vivo"), t('footer.events', "Eventos"), t('footer.rewards', "Recompensas")],
+    community: t('footer.community', "Comunidad"),
+    communityLinks: [t('footer.journal', "Diario"), t('footer.pass', "AGARRA Pass"), t('footer.creators', "Para Creadores"), t('footer.partners', "Festivales Aliados")],
+    about: t('footer.about', "Nosotros"),
+    aboutLinks: [t('footer.mission', "Nuestra Misión"), t('footer.team', "Equipo"), t('footer.press', "Prensa"), t('footer.contact', "Contacto")],
+    rights: t('footer.rights', "Todos los derechos reservados."),
+    legal: [t('footer.privacy', "Privacidad"), t('footer.terms', "Términos"), t('footer.cookies', "Cookies")],
   };
-
-  const textEn = {
-    desc: "A curated platform for Ibero-American independent cinema. Watch, participate, earn.",
-    platform: "Platform",
-    platformLinks: ["Explore Films", "Live Channels", "Events", "Rewards"],
-    community: "Community",
-    communityLinks: ["Journal", "AGARRA Pass", "For Creators", "Festival Partners"],
-    about: "About",
-    aboutLinks: ["Our Mission", "Team", "Press", "Contact"],
-    rights: "All rights reserved.",
-    legal: ["Privacy", "Terms", "Cookies"],
-  };
-
-  const text = language === 'es' ? textEs : textEn;
 
   return (
     <footer className="bg-[#0A0A0A] border-t border-[#262626]/50 mt-24">

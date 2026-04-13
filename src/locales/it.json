@@ -1,0 +1,34 @@
+{
+  "nav": {
+    "explore": "Esplora",
+    "channels": "Canali",
+    "journal": "Rivista",
+    "pass": "Pass",
+    "creators": "Per i Creatori",
+    "signin": "Accedi",
+    "join_pass": "Unisciti al Pass",
+    "my_account": "Il mio Account",
+    "apply_creator": "Diventa Creatore"
+  },
+  "auth": {
+    "login_title": "Bentornato",
+    "register_title": "Crea il tuo Passaporto",
+    "login_desc": "Inserisci le tue credenziali per continuare",
+    "register_desc": "Unisciti all'ecosistema del cinema indipendente",
+    "name_label": "Nome Completo",
+    "email_label": "Email",
+    "password_label": "Password",
+    "login_btn": "Accedi",
+    "register_btn": "Registrati",
+    "no_account": "Non hai un account?",
+    "has_account": "Hai già un account?",
+    "register_link": "Registrati qui",
+    "login_link": "Accedi",
+    "back": "Torna alla Home",
+    "login_success": "Accesso effettuato",
+    "login_error": "Email o password non validi",
+    "missing_fields": "Per favore compila tutti i campi",
+    "register_success": "Account creato con successo",
+    "register_error": "Email già in uso"
+  }
+}

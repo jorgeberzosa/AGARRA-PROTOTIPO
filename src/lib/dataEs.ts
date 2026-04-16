@@ -29,6 +29,10 @@ export interface Film {
   rewards: number;
   upcomingEvent?: string;
   festivalSelection?: string;
+  metrics?: { label: string; value: string | number; extra?: string }[];
+  objectives?: string[];
+  pastEvents?: { date: string; attendees: number; description: string }[];
+  immersiveWebsite?: string;
 }
 
 export interface Article {
@@ -83,6 +87,23 @@ export const films: Film[] = [
     rewards: 12,
     upcomingEvent: "Q&A en vivo con el Director — 28 de Mar",
     festivalSelection: "IFF Panamá",
+    metrics: [
+      { label: "Eventos Activados", value: 12 },
+      { label: "Participantes", value: "+3000" },
+      { label: "Asistencia", value: "85%" },
+      { label: "Comunidad Activa", value: "+1500" }
+    ],
+    objectives: [
+      "Escalabilidad de audiencia inmersiva",
+      "Expansión territorial (Panamá, Laval, Bruselas)",
+      "Transición a Fase 2 (Royalty)"
+    ],
+    pastEvents: [
+      { date: "Oct 2022", attendees: 450, description: "Estreno Seminci Valladolid" },
+      { date: "Abr 2023", attendees: 600, description: "Estreno Panamá" },
+      { date: "2023-2024", attendees: 1200, description: "Creación Experiencia Inmersiva (Venecia, Laval Virtual, Panamá)" }
+    ],
+    immersiveWebsite: "https://experience.gauguincanal.com",
   },
   {
     id: "km-72",

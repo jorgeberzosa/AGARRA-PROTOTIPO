@@ -232,11 +232,10 @@ export function Footer() {
               {text.platform}
             </h4>
             <div className="space-y-3">
-              {text.platformLinks.map((item) => (
-                <Link key={item} to="/explore" className="block text-sm text-[#9A9590] hover:text-[#C8A97E] transition-colors">
-                  {item}
-                </Link>
-              ))}
+              <Link to="/explore" className="block text-sm text-[#9A9590] hover:text-[#C8A97E] transition-colors">{text.platformLinks[0]}</Link>
+              <Link to="/" className="block text-sm text-[#9A9590] hover:text-[#C8A97E] transition-colors">{text.platformLinks[1]}</Link>
+              <Link to="/journal" className="block text-sm text-[#9A9590] hover:text-[#C8A97E] transition-colors">{text.platformLinks[2]}</Link>
+              <Link to="/pass" className="block text-sm text-[#9A9590] hover:text-[#C8A97E] transition-colors">{text.platformLinks[3]}</Link>
             </div>
           </div>
           <div>
@@ -244,11 +243,10 @@ export function Footer() {
               {text.community}
             </h4>
             <div className="space-y-3">
-              {text.communityLinks.map((item) => (
-                <Link key={item} to="/journal" className="block text-sm text-[#9A9590] hover:text-[#C8A97E] transition-colors">
-                  {item}
-                </Link>
-              ))}
+              <Link to="/journal" className="block text-sm text-[#9A9590] hover:text-[#C8A97E] transition-colors">{text.communityLinks[0]}</Link>
+              <Link to="/pass" className="block text-sm text-[#9A9590] hover:text-[#C8A97E] transition-colors">{text.communityLinks[1]}</Link>
+              <Link to="/creators" className="block text-sm text-[#9A9590] hover:text-[#C8A97E] transition-colors">{text.communityLinks[2]}</Link>
+              <a href="mailto:info@agarra.app" className="block text-sm text-[#9A9590] hover:text-[#C8A97E] transition-colors cursor-pointer">{text.communityLinks[3]}</a>
             </div>
           </div>
           <div>
@@ -256,11 +254,10 @@ export function Footer() {
               {text.about}
             </h4>
             <div className="space-y-3">
-              {text.aboutLinks.map((item) => (
-                <span key={item} className="block text-sm text-[#9A9590] hover:text-[#C8A97E] transition-colors cursor-pointer">
-                  {item}
-                </span>
-              ))}
+              <Link to="/journal" className="block text-sm text-[#9A9590] hover:text-[#C8A97E] transition-colors">{text.aboutLinks[0]}</Link>
+              <a href="mailto:info@agarra.app" className="block text-sm text-[#9A9590] hover:text-[#C8A97E] transition-colors cursor-pointer">{text.aboutLinks[1]}</a>
+              <a href="mailto:info@agarra.app" className="block text-sm text-[#9A9590] hover:text-[#C8A97E] transition-colors cursor-pointer">{text.aboutLinks[2]}</a>
+              <a href="mailto:info@agarra.app" className="block text-sm text-[#9A9590] hover:text-[#C8A97E] transition-colors cursor-pointer">{text.aboutLinks[3]}</a>
             </div>
           </div>
         </div>
@@ -269,11 +266,9 @@ export function Footer() {
             © 2026 AGARRA. {text.rights}
           </p>
           <div className="flex items-center gap-6">
-            {text.legal.map((item) => (
-              <span key={item} className="text-xs text-[#9A9590] hover:text-[#C8A97E] transition-colors cursor-pointer">
-                {item}
-              </span>
-            ))}
+            <Link to="/" className="text-xs text-[#9A9590] hover:text-[#C8A97E] transition-colors cursor-pointer">{text.legal[0]}</Link>
+            <Link to="/" className="text-xs text-[#9A9590] hover:text-[#C8A97E] transition-colors cursor-pointer">{text.legal[1]}</Link>
+            <Link to="/" className="text-xs text-[#9A9590] hover:text-[#C8A97E] transition-colors cursor-pointer">{text.legal[2]}</Link>
           </div>
         </div>
       </div>

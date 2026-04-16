@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import {
   Play,
   Users,
@@ -101,6 +102,26 @@ export default function FilmDetailEs() {
         <div className="grid lg:grid-cols-3 gap-12">
           {/* Left: Content */}
           <div className="lg:col-span-2 space-y-16">
+            {film.immersiveWebsite && (
+              <a href={film.immersiveWebsite} target="_blank" rel="noopener noreferrer" className="block w-full">
+                <div className="relative group overflow-hidden rounded-xl bg-gradient-to-r from-[#C8A97E] via-[#E6D5B8] to-[#C8A97E] p-[2px]">
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-[100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
+                  <div className="flex items-center justify-between bg-[#0A0A0A] rounded-[10px] px-8 py-5 group-hover:bg-[#0f0f0f] transition-colors">
+                    <div className="flex items-center gap-4">
+                      <div className="bg-[#C8A97E]/20 p-2.5 rounded-full">
+                        <Play size={24} className="text-[#C8A97E] fill-[#C8A97E]" />
+                      </div>
+                      <div>
+                        <h3 className="font-display text-2xl font-bold text-[#F5F0EB]">Acceder a la Experiencia Inmersiva</h3>
+                        <p className="text-[#9A9590] text-sm mt-1">Descubre el universo interactivo detrás de la película</p>
+                      </div>
+                    </div>
+                    <ChevronRight size={24} className="text-[#C8A97E] group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </div>
+              </a>
+            )}
+
             {/* Synopsis */}
             <div>
               <h2 className="font-display text-2xl font-bold text-[#F5F0EB] mb-4">
@@ -111,15 +132,39 @@ export default function FilmDetailEs() {
               </p>
             </div>
 
-            {/* Why This Film Matters */}
+            {/* Lo destacado */}
             <div className="bg-[#141414] border border-[#262626] rounded-lg p-8">
               <h2 className="font-display text-2xl font-bold text-[#C8A97E] mb-4">
-                Por qué importa esta película
+                ★ Lo destacado
               </h2>
               <p className="text-[#9A9590] leading-relaxed text-base italic">
                 {film.whyItMatters}
               </p>
             </div>
+
+            {/* Past Events */}
+            {film.pastEvents && (
+              <div>
+                <h2 className="font-display text-2xl font-bold text-[#F5F0EB] mb-6">
+                  Eventos Concluidos
+                </h2>
+                <div className="space-y-4">
+                  {film.pastEvents.map((event, i) => (
+                    <div key={i} className="flex items-center justify-between bg-[#141414] border border-[#262626] rounded-lg p-5">
+                      <div>
+                        <h4 className="font-medium text-[#F5F0EB]">{event.description}</h4>
+                        <p className="text-sm text-[#9A9590] mt-1">{event.date}</p>
+                      </div>
+                      <div className="text-right">
+                        <Badge variant="outline" className="text-[#C8A97E] border-[#C8A97E]/30 bg-[#C8A97E]/10">
+                          {event.attendees} asistentes
+                        </Badge>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
 
             {/* Upcoming Events */}
             <div>
@@ -257,30 +302,41 @@ export default function FilmDetailEs() {
                   Estadísticas del Canal
                 </h3>
                 <div className="space-y-4">
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-[#9A9590] flex items-center gap-2">
-                      <Eye size={20} className="text-[#C8A97E]" /> Miembros
-                    </span>
-                    <span className="text-sm text-[#F5F0EB] font-medium">
-                      {film.members.toLocaleString()}
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-[#9A9590] flex items-center gap-2">
-                      <Calendar size={14} className="text-[#C8A97E]" /> Eventos
-                    </span>
-                    <span className="text-sm text-[#F5F0EB] font-medium">
-                      {filmEvents.length} próximos
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-[#9A9590] flex items-center gap-2">
-                      <MessageCircle size={14} className="text-[#C8A97E]" /> Activity
-                    </span>
-                    <span className="text-sm text-[#6B8F71] font-medium">
-                      Very Active
-                    </span>
-                  </div>
+                  {film.metrics ? (
+                    film.metrics.map((metric, i) => (
+                      <div key={i} className="flex items-center justify-between">
+                        <span className="text-sm text-[#9A9590]">{metric.label}</span>
+                        <span className="text-sm text-[#F5F0EB] font-medium">{metric.value}</span>
+                      </div>
+                    ))
+                  ) : (
+                    <>
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm text-[#9A9590] flex items-center gap-2">
+                          <Eye size={20} className="text-[#C8A97E]" /> Miembros
+                        </span>
+                        <span className="text-sm text-[#F5F0EB] font-medium">
+                          {film.members.toLocaleString()}
+                        </span>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm text-[#9A9590] flex items-center gap-2">
+                          <Calendar size={14} className="text-[#C8A97E]" /> Eventos
+                        </span>
+                        <span className="text-sm text-[#F5F0EB] font-medium">
+                          {filmEvents.length} próximos
+                        </span>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm text-[#9A9590] flex items-center gap-2">
+                          <MessageCircle size={14} className="text-[#C8A97E]" /> Activity
+                        </span>
+                        <span className="text-sm text-[#6B8F71] font-medium">
+                          Very Active
+                        </span>
+                      </div>
+                    </>
+                  )}
                 </div>
               </div>
 
